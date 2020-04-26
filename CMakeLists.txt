@@ -5,10 +5,12 @@ set(TARGET onewire)
 #-----------------------------------------------------------------------------#
 
 if (SERIES STREQUAL AVR)
-	add_library(${TARGET} STATIC *files*)
+	add_library(${TARGET} STATIC src/onewire_avr.c
+					lib/utils_avr.c)
 
 elseif (SERIES STREQUAL TIVA)
-	add_library(${TARGET} STATIC *files*)
+	add_library(${TARGET} STATIC src/onewire_tiva.c
+					lib/utils_tiva.c)
 
 else()
 	message(">> Failure due to missing SERIES.")

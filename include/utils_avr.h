@@ -17,7 +17,7 @@ typedef struct PortPin {
     volatile uint8_t *port;
     volatile uint8_t *value;
     uint8_t pin;
-} avr_PortPin_t
+} avr_PortPin_t;
 
 
 /**
