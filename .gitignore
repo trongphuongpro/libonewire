@@ -1,0 +1,4 @@
+build/
+bin/
+*sublime*
+sftp-mkcp_config.json
