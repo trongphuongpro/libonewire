@@ -23,17 +23,27 @@ void avr_onewire_init(avr_PortPin_t pin);
 
 void tiva_onewire_init();
 
-void onewire_readROMSingle(uint8_t *address);
+
+//! \brief get address of the next slave on multi-drop bus
+//! \param address slave's address
+//!
+uint8_t onewire_search(uint8_t address_box[][8]);
+
+
+//! \brief get address of the slave on single-drop bus
+//! \param address slave's address
+//!
+bool onewire_getSlaveAddress(uint8_t *address);
 
 
 //! \brief select slave with specific address
 //! \param address slave's address
 //!
-void onewire_select(const uint8_t *address);
+bool onewire_select(const uint8_t *address);
 
 //! \brief select all slaves on bus
 //!
-void onewire_selectAll(void);
+bool onewire_selectAll(void);
 
 
 //! \brief reset 1-wire bus
