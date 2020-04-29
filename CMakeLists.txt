@@ -5,23 +5,21 @@ set(TARGET onewire)
 #-----------------------------------------------------------------------------#
 
 if (SERIES STREQUAL AVR)
-	add_subdirectory($ENV{HOME}/Work/BareMetal/libraries/uart uart)
 	add_library(${TARGET} STATIC src/onewire_avr.c
-					lib/utils_avr.c)
-	target_link_libraries(${TARGET} uart)
+								lib/utils_avr.c)
 
 
 elseif (SERIES STREQUAL TIVA)
 	add_library(${TARGET} STATIC src/onewire_tiva.c
-					lib/utils_tiva.c)
+								lib/utils_tiva.c
+						${TIVAWARE_PATH}/utils/uartstdio.c)
 
 else()
 	message(">> Failure due to missing SERIES.")
 
 endif()
 
-target_include_directories(${TARGET} PRIVATE include
-	$ENV{HOME}/Work/BareMetal/libraries/uart/include)
+target_include_directories(${TARGET} PRIVATE include)
 
 #-----------------------------------------------------------------------------#
 

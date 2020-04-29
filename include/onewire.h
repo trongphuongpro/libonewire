@@ -14,20 +14,31 @@ extern "C" {
 #include <stdbool.h>
 
 #include "utils_avr.h"
-//#include "utils_tiva.h"
+#include "utils_tiva.h"
+
+
+#define SEARCH_ROM      0xF0
+#define READ_ROM        0x33
+#define MATCH_ROM       0x55
+#define SKIP_ROM        0xCC
+
 
 //! \brief initialize GPIO pin for 1-wire communication
 //! \param pin GPIO port and pin.
 //!
 void avr_onewire_init(avr_PortPin_t pin);
 
-void tiva_onewire_init();
+
+//! \brief initialize GPIO pin for 1-wire communication
+//! \param pin GPIO port and pin.
+//!
+void tiva_onewire_init(tiva_PortPin_t pin);
 
 
 //! \brief get address of the next slave on multi-drop bus
 //! \param address slave's address
 //!
-uint8_t onewire_search(uint8_t address_box[][8]);
+uint8_t onewire_search(uint8_t address_box[][8], uint8_t number);
 
 
 //! \brief get address of the slave on single-drop bus

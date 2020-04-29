@@ -1,18 +1,18 @@
 /**
- * @file utils.h
+ * @file utils_avr.h
  * @brief Utility functions for AVR programming.
  * @author Nguyen Trong Phuong (aka trongphuongpro)
  * @date 2020 Feb, 15
  */
 
-#ifndef __UTILS__
-#define __UTILS__
+#ifndef __UTILS_AVR__
+#define __UTILS_AVR__
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-typedef struct PortPin {
+typedef struct avr_PortPin {
     volatile uint8_t *ddr;
     volatile uint8_t *port;
     volatile uint8_t *value;
@@ -31,4 +31,4 @@ uint16_t showMemory(void);
 }
 #endif
 
-#endif /* __UTILS__ */
+#endif /* __UTILS_AVR__ */

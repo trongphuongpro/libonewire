@@ -10,13 +10,6 @@
 #include <util/delay.h>
 #include <util/crc16.h>
 
-#include <stdio.h>
-#include "uart.h"
-
-#define SEARCH_ROM      0xF0
-#define READ_ROM        0x33
-#define MATCH_ROM       0x55
-#define SKIP_ROM        0xCC
 
 static avr_PortPin_t data_pin;
 static uint8_t last_conflict_bit;
@@ -97,13 +90,13 @@ bool onewire_getSlaveAddress(uint8_t *address) {
 }
 
 
-uint8_t onewire_search(uint8_t address_box[][8]) {
+uint8_t onewire_search(uint8_t address_box[][8], uint8_t number) {
     uint8_t counter = 0;
     int8_t status;
 
     onewire_initSearchRoutine();
 
-    while (1) {
+    for (uint8_t i = 0; i < number; i++) {
         status = onewire_searchNextDevice(address_box[counter]);
 
         if (status == 0) {
